@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<title>Arvutamine</title>
+  <script>
+  var yhendus=new XMLHttpRequest();
+  yhendus.onreadystatechange=andmedSaabusid;
+  function alleeliliitja(){
+    var e = document.getElementById("alleel1");
+    var a1 = e.options[e.selectedIndex].value;
+    var x = document.getElementById("alleel2");
+    var a2 = x.options[x.selectedIndex].value;
+    var y1 = document.getElementById("x1").value;
+    var y2 = document.getElementById("x2").value;
+    console.log(a1);
+    console.log(a2);
+
+    var aadress="/geenilooja?alleel1="+a1+"&alleel2="+a2+"&vaartus1="+y1+"&vaartus2="+y2;
+    yhendus.open("GET", aadress, true);
+    yhendus.send();
+  }
+  function andmedSaabusid(){
+    document.getElementById("vastus").innerHTML=yhendus.responseText;
+  }
+  </script>
+</head>
+<h1>Geeni alleelide liitaj.</h1>
+<a href=arvutus2.html>Suvaliste alleelide liitja</a>
+<br></br>
+<body>
+  <input type="text" id="x1" placeholder="Alleel1" >
+  <select id="allel1">
+  <option value="+"> +</option>
+  <option value="-"> -</option>
+</select>
+<br></br>
+<input type="tsxt" id="x2" placeholder="Alleel2" >
+<select id="allel2">
+<option value="+"> +</option>
+<option value="-"> -</option>
+</select>
+
+  <input type="button" value="kahe suvalise geenialleli summa" onclick="alleeliliitja()"/>
+  <div id="vastus">Vastus</div>
+</body>
+</html>

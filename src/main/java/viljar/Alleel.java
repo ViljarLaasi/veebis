@@ -1,4 +1,3 @@
-package viljar;
 public class Alleel{
   String nimetus;
   int toevaartus;

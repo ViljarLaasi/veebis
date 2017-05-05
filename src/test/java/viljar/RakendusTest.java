@@ -1,25 +1,36 @@
 package viljar;
 import org.junit.*;
+import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class RakendusTest{
 	@Test
-	public void katse1(){
-		Geen u=new Geen();
-		Alleel[] sisu=new Alleel[2];
-		sisu[0]= new Alleel("ARG",1);
-		sisu[1]= new Alleel("ARG",0);
-		assertEquals(true,u.Reesus(sisu));
+	public void kasJoogiKogus() throws IOException{
+		assertEquals(110,(new lugeja().getJoogiKogus("vein")),0.02);
 	}
-
-    //@Test
-    //public void tervituseTest(){
-		//Rakendus r=new Rakendus();
-		//assertEquals("Tere, Juku", r.tervitusfunktsioon3("Juku"));
-	//}
+	@Test
+	public void kasJook() throws IOException{
+		String x="plast";
+		assertEquals(1,(Joogipudel.valueOf(x).getPudeliMaht()),0.02);
+	}
+	@Test
+	public void kasPudelisse()throws IOException{
+		assertEquals("Sellist jooki või pudelit pole olemas",
+		new JookPudelisse().JookPudelisse("kivi","plast","2"));
+	}
 	/*@Test
-	public void tervituseTest2(){
-		Rakendus r=new Rakendus();
-		assertEquals("Tere, kodanik Juurikas J", r.tervitusfunktsioon4("Juku", "Juurikas"));
+	public void kasMituLiitritKastis()throws IOException{
+		assertEquals(24.0,
+		new VaadistKasti().MituLiitritKastis("plast", "k24"));
+	}*/
+	/*@Test
+	public void kasJaakkastis()throws IOException{
+		assertEquals(10.0,
+		new VaadistKasti().Jaagileidja("plast", "olu", "k24"),0.02);
+	}*/
+	/*@Test
+	public void VaadistKasti()throws IOException{
+		assertEquals("10.0",
+		new VaadistKasti().VaadistKasti("plast", "olu", "k24"),0.02);
 	}*/
 }

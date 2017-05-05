@@ -1,32 +1,30 @@
 package viljar;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-@RestController
-@SpringBootApplication
+import java.util.Scanner;
+import java.util.Random;
+import java.io.*;
 public class Geen{
-  @RequestMapping("/algus")
-    boolean tervitusfunktsioon() {
-      Alleel[] sisu=new Alleel[3];
-      sisu[0]= new Alleel("ARG",1);
-      sisu[1]= new Alleel("ARG",0);
-      sisu[2]= new Alleel("ARG",0);
-      //System.out.println(Reesus(sisu));
-        return Reesus(sisu);
-}
-
-  public static void main(String[]args){
-    System.getProperties().put("server.port", 2497);
-    SpringApplication.run(Geen.class, args);
-  }
-  public static boolean Reesus(Alleel[] x){
-    for (int i=0; i<1; i++){
-      if(x[i].gettoevaartus() == 1){
-        System.out.println("Tere");
-        return true;
+String[] tagasta ;
+String[] tagastaalleel;
+int nr ;
+  public String[] lugeja(String u)throws IOException{
+    String[] split;
+    Scanner file=new Scanner(new File("geenid.txt"));
+    int numTimes =file.nextInt();
+    file.nextLine();
+      for (int i=0; i<numTimes; i++){
+        split=file.nextLine().split(" ");
+        if ((split[0].trim()).equals(u.trim())){
+        tagasta=split;
+        }
       }
-    }
-  return false;
+    return tagasta;
+  }
+  public String getSuvalineAleel(String u)throws IOException{
+    nr=new Random().nextInt((1-10)+1)+min;
+    tagastaalleel=lugeja(u)[nr].split("");
+    return tagastaalleel[0]+tagastaalleel[1]+tagastaalleel[3];
+  }
+  public String[] getGeen(String u)throws IOException{
+    return lugeja(u);
   }
 }
